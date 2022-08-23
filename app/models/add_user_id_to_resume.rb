@@ -1,0 +1,2 @@
+class AddUserIdToResume < ApplicationRecord
+end

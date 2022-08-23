@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_from: MyString
+  date_to: MyString
+  level: MyString
+  descrption: MyText
+  place: MyString
+  resume: one
+
+two:
+  date_from: MyString
+  date_to: MyString
+  level: MyString
+  descrption: MyText
+  place: MyString
+  resume: two
