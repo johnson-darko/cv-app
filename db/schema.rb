@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_23_195018) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_23_223047) do
   create_table "educations", force: :cascade do |t|
     t.string "date_from"
     t.string "date_to"
@@ -21,6 +21,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_23_195018) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["resume_id"], name: "index_educations_on_resume_id"
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "name"
+    t.string "level"
+    t.integer "resume_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resume_id"], name: "index_languages_on_resume_id"
   end
 
   create_table "resumes", force: :cascade do |t|
@@ -54,4 +63,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_23_195018) do
   end
 
   add_foreign_key "educations", "resumes"
+  add_foreign_key "languages", "resumes"
 end

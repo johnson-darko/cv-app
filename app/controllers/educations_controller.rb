@@ -1,6 +1,6 @@
 class EducationsController < ApplicationController
-	 before_action :set_education, only: [:update, :destroy]
-  before_action :set_resume
+	before_action :set_education, only: [:update, :destroy]
+  before_action :set_resume, only: [:new, :create]
 
   def new
     @education = Education.new
@@ -11,6 +11,8 @@ class EducationsController < ApplicationController
     @education.resume_id = @resume.id
     if @education.save
       redirect_to edit_resume_path(@resume)
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -32,10 +34,10 @@ class EducationsController < ApplicationController
   end
 
   def set_resume
-    @resume = Resume.find(params[:resume_id])
+    @resume = Education.find(params[:resume_id])
   end
 
   def education_params
-    require(:education).permit(:date_from, :date_to, :level, :description, :place)
+    params.require(:education).permit(:date_from, :date_to, :level, :descrption, :place)
   end
 end
