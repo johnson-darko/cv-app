@@ -10,36 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_23_223047) do
-  create_table "educations", force: :cascade do |t|
-    t.string "date_from"
-    t.string "date_to"
-    t.string "level"
-    t.text "descrption"
-    t.string "place"
-    t.integer "resume_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["resume_id"], name: "index_educations_on_resume_id"
-  end
-
-  create_table "languages", force: :cascade do |t|
-    t.string "name"
-    t.string "level"
-    t.integer "resume_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["resume_id"], name: "index_languages_on_resume_id"
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2022_08_24_085140) do
   create_table "resumes", force: :cascade do |t|
-    t.string "name"
-    t.text "general_info"
-    t.string "interests"
+    t.string "name_user"
+    t.text "user_info"
+    t.string "user_interest"
     t.string "avatar_file_name"
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string "project_name"
+    t.datetime "project_date_from"
+    t.datetime "project_date_to"
+    t.text "project_description"
+    t.text "project_technologies"
+    t.string "project_link"
+    t.string "language_name"
+    t.string "language_level"
+    t.text "project_role"
+    t.datetime "education_date_from"
+    t.datetime "education_date_to"
+    t.string "education_location"
+    t.string "education_level"
+    t.text "education_description"
+    t.datetime "job_date_from"
+    t.datetime "job_date_to"
+    t.string "job_company"
+    t.string "job_location"
+    t.string "job_position"
+    t.string "skill_title"
+    t.string "skill_level"
+    t.string "skill_color"
+    t.string "github_links"
+    t.string "linkdeln_links"
+    t.string "twitter_links"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -62,6 +66,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_23_223047) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "educations", "resumes"
-  add_foreign_key "languages", "resumes"
 end

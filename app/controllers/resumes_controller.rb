@@ -68,9 +68,8 @@ def index
     end
 
   def resume_params
-    params.require(:resume).permit(:name, :general_info, :interests, :avatar, :user_id,
-    	languages_attributes: [:id, :name, :level, :_destroy],
-                                     educations_attributes:[:id, :date_from, :date_to, :level, :descrption, :place, :_destroy])
+    params.require(:resume).permit(:name_user, :user_info, :user_interest, :avatar_file_name , :avatar_content_type , :avatar_file_size , :avatar_updated_at , :project_name , :project_date_from , :project_date_to , :project_description , :project_technologies , :project_link , :language_name , :language_level , :project_role , :education_date_from , :education_date_to , :education_location , :education_level , :education_description ,  :job_date_from ,  :job_date_to ,  :job_company ,   :job_location ,  :job_position ,  :skill_title ,   :skill_level ,   :skill_color ,   :github_links ,   :linkdeln_links ,   :twitter_links)
+      
   end
 
 

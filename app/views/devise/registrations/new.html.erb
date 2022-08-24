@@ -1,34 +1,25 @@
-<div class="form-box">
-  <div class="head">Register</div>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => 'login-form'}) do |f| %>
-      <%= devise_error_messages! %>
+<h2>Sign up</h2>
 
-      <div class="my-form-group">
-        <label class="my-label-control">
-          <span class="my-label-text">Email</span>
-        </label>
-        <%= f.email_field :email, autofocus: true, class: 'my-form-control' %>
-      </div>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
+  <%= f.error_notification %>
 
-      <div class="my-form-group">
-        <label for="" class="my-label-control">
-          <span class="my-label-text">Password <sup>(minimum <%= @minimum_password_length %>)</sup></span>
-        </label>
-        <%= f.password_field :password, autocomplete: 'off', class: 'my-form-control' %>
-      </div>
+  <div class="form-inputs">
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" }%>
+    <%= f.input :password,
+                required: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation,
+                required: true,
+                input_html: { autocomplete: "new-password" } %>
+  </div>
 
-      <div class="my-form-group">
-        <label for="" class="my-label-control">
-          <span class="my-label-text">Password confirmation</span>
-        </label>
-        <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'my-form-control' %>
-      </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up" %>
+  </div>
+<% end %>
 
-      <%= f.submit 'Sign up', class: 'login-btn'%>
-
-      <%- if controller_name != 'sessions' %>
-          <span>Have account?</span>
-          <%= link_to 'Log in', new_session_path(resource_name) %><br />
-      <% end -%>
-  <% end %>
-</div>
+<%= render "devise/shared/links" %>
