@@ -1,5 +1,6 @@
 <div class="container">
-  <%= form_for @resume do |f| %>
+ 
+  <%= simple_form_for(@resume) do |f| %>
       <p class="pull-right links">
         <%= f.submit class: 'btn btn-primary btn-sm' %>
         <%= link_to 'Back', :back, class: 'btn btn-default btn-sm' %>
@@ -20,31 +21,78 @@
   </div>
       <div class="row">
         <div class="col-md-10 col-md-offset-1 card">
-          <div class="text-center"><h4>Basic information</h4></div>
+          <div class="text-center"><h4>BASIC INFORMATIONS</h4></div>
           <hr>
-            <div class="form-group">
-              <%= f.text_field :name_user, class: 'ever-inputs', placeholder: 'Name*' %>
-            </div>
-
-            <div class="form-group">
-              <%= f.text_area :user_info, class: 'ever-inputs', placeholder: 'General information*' %>
-            </div>
-
-            <div class="form-group">
-              <%= f.text_field :user_interest, class: 'ever-inputs', placeholder: 'Interest*' %>
-            </div>
-
             <div class="form-group fileUpload btn btn-primary">
               <span>Upload image</span>
               <%= f.file_field :avatar, class: 'upload' %>
               <%= f.hidden_field :user_id , :value => current_user.id %>
             </div>
+
+            <div class="form-group">
+              <%= f.input :name_user, class: 'ever-inputs', placeholder: 'Name*' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.input :user_info, class: 'ever-inputs', placeholder: 'General information*' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.input :user_interest, class: 'ever-inputs', placeholder: 'Interest*' %>
+            </div>
+             <br>
+              <div class="text-center"><h4>EDUCATIONS</h4></div>
+          <hr>
+
+          <div class="form-group">
+              <%= f.input :education_date_from, class: 'ever-inputs', placeholder: 'Start date*' %>
+            </div>
+
+             <div class="form-group">
+              <%= f.input :education_date_to, class: 'ever-inputs', placeholder: 'End date*' %>
+            </div>
+
+             <div class="form-group">
+              <%= f.input :education_location, class: 'ever-inputs', placeholder: 'Country of Certificate*' %>
+            </div>
+
+             <div class="form-group">
+              <%= f.input :education_level, class: 'ever-inputs', placeholder: 'Level of Education*' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.input :education_description, class: 'ever-inputs', placeholder: 'About Program*' %>
+            </div>
+ <div class="text-right">
+              <%= link_to new_resume_path, 'Add more', class: 'add-buttons pull-right' %>
+            </div>
+   <div class="text-center"><h4>JOBS</h4></div>
+          <hr>
+
+              <div class="form-inputs">
+              <%= f.input :job_date_from, class: 'ever-inputs', placeholder: 'Start of Job*' %>
+            </div>
+
+             <div class="form-inputs mt-4">
+              <%= f.input :job_date_to, class: 'ever-inputs', placeholder: 'End of Job*' %>
+            </div>
         </div>
 
       </div>
 
+<br>
+
+
+
+
+
+
+
+
+
+
+
      
-      
 
        
 
@@ -68,3 +116,5 @@
   <% end %>
 
 </div>
+
+
